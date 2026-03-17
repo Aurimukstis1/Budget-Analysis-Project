@@ -1,0 +1,2 @@
+# Bankomatas
+TECHIN summer project
