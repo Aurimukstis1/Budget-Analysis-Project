@@ -1,2 +1,2 @@
-# Bankomatas
-TECHIN summer project
+# Budget Analysis Application
+TECHIN Summer project
