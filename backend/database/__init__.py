@@ -1,6 +1,9 @@
 from .base import Base
-# from .session import engine, AsyncSessionLocal, DATABASE_URL
+from .session import engine, AsyncSessionLocal, DATABASE_URL
 
 __all__ = [
-    "Base"
+    "Base",
+    "engine",
+    "AsyncSessionLocal",
+    "DATABASE_URL",
 ]
