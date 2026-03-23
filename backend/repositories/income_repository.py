@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from models import Income
 
 class IncomeRepository:
-    @classmethod
+    @staticmethod
     async def create(db: AsyncSession, data: dict) -> Income:
         income = Income(**data)
         db.add(income)

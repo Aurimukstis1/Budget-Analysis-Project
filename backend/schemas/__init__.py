@@ -1,6 +1,6 @@
 # from .expense import
-# from .income import
+from .income import IncomeCreate
 
-# __all__ = [
-#     " ",
-# ]
+__all__ = [
+    "IncomeCreate",
+]
