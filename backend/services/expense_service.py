@@ -1,9 +1,9 @@
-from sqlalchemy.ext.asyncio import AsyncSession
 # from datetime import datetime, date
-from fastapi import HTTPException
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from repositories import ExpenseRepository
-from schemas import ExpenseCreate, ExpenseOut
+from schemas import ExpenseCreate
+
 
 class ExpenseService:
     @staticmethod
