@@ -1,9 +1,8 @@
-from typing import Literal
-from datetime import datetime
 from typing import Optional
- 
+
 from pydantic import BaseModel, ConfigDict, Field
- 
+
+
 class ExpenseBase(BaseModel):
     user_id: Optional[int] = None
     amount: float = Field(..., gt=0)

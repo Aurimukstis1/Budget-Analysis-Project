@@ -1,5 +1,5 @@
 from .base import Base
-from .session import engine, AsyncSessionLocal, DATABASE_URL
+from .session import DATABASE_URL, AsyncSessionLocal, engine
 
 __all__ = [
     "Base",
