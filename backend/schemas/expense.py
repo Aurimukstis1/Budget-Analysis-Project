@@ -8,8 +8,6 @@ class ExpenseBase(BaseModel):
     amount: float = Field(..., gt=0)
     name: str = Field(..., min_length=1, max_length=255)
     category_id: Optional[int] = None
-    created_at: Optional[str] = None
-    updated_at: Optional[str] = None
  
     model_config = ConfigDict(
         str_strip_whitespace=True,
