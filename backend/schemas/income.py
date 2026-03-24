@@ -17,6 +17,9 @@ class IncomeBase(BaseModel):
 class IncomeCreate(IncomeBase):
     pass
 
+class IncomePut(IncomeBase):
+    pass
+
 
 class IncomeOut(BaseModel):
     income_id: int
