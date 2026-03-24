@@ -1,14 +1,13 @@
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import (
-    Boolean,
-    CheckConstraint,
     Float,
     ForeignKey,
     Integer,
     String,
 )
+from sqlalchemy.orm import Mapped, mapped_column
+
 from database import Base
+
 
 class Budget(Base):
     __tablename__ = "budgets"
