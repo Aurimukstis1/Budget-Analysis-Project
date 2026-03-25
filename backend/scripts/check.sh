@@ -5,7 +5,7 @@ echo "Formatting..."
 poetry run black .
 
 echo "Linting..."
-poetry run ruff check .
+poetry run ruff check . --fix
 
 echo "Type checking..."
 poetry run mypy .
