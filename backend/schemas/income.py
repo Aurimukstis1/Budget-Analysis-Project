@@ -14,8 +14,10 @@ class IncomeBase(BaseModel):
         extra="forbid",
     )
 
+
 class IncomeCreate(IncomeBase):
     pass
+
 
 class IncomePut(IncomeBase):
     pass
@@ -31,4 +33,3 @@ class IncomeOut(BaseModel):
     updated_at: Optional[str]
 
     model_config = ConfigDict(from_attributes=True)
-

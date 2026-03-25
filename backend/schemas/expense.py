@@ -8,14 +8,16 @@ class ExpenseBase(BaseModel):
     amount: float = Field(..., gt=0)
     name: str = Field(..., min_length=1, max_length=255)
     category_id: Optional[int] = None
- 
+
     model_config = ConfigDict(
         str_strip_whitespace=True,
         extra="forbid",
     )
- 
+
+
 class ExpenseCreate(ExpenseBase):
     pass
+
 
 class ExpenseOut(BaseModel):
     user_id: int
