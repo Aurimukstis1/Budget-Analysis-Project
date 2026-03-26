@@ -12,7 +12,7 @@ engine = create_async_engine(
 
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,
-    class_=AsyncSession, # Optional: async_sessionmaker uses AsyncSession by default; only needed if you want to customize
+    class_=AsyncSession,  # Optional: async_sessionmaker uses AsyncSession by default; only needed if you want to customize
     autoflush=False,
     expire_on_commit=False,
 )

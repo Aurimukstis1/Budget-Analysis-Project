@@ -12,11 +12,7 @@ class IncomeService:
         # if not category:
         #     raise NotFoundException("Category not found")
 
-        return await IncomeRepository.create(
-                    db=db,
-                    data=payload.model_dump()
-                )
-    
+        return await IncomeRepository.create(db=db, data=payload.model_dump())
 
     @staticmethod
     async def update_income(

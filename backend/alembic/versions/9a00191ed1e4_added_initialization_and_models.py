@@ -1,14 +1,15 @@
 """added initialization and models
 
 Revision ID: 9a00191ed1e4
-Revises: 
+Revises:
 Create Date: 2026-03-20 09:02:20.648593
 
 """
+
 from typing import Sequence, Union
 
 # revision identifiers, used by Alembic.
-revision: str = '9a00191ed1e4'
+revision: str = "9a00191ed1e4"
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None

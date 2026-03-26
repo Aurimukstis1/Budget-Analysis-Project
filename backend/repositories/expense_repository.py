@@ -4,6 +4,7 @@ from models import Expense
 
 # from schemas import expense
 
+
 class ExpenseRepository:
     @staticmethod
     async def create(
@@ -15,4 +16,3 @@ class ExpenseRepository:
         await db.commit()
         await db.refresh(expense)
         return expense
-

@@ -18,8 +18,14 @@ class User(Base):
     # )
 
     user_id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    credential_id: Mapped[int] = mapped_column(ForeignKey("credentials.credential_id", ondelete="RESTRICT"), nullable=True, index=True)
-    role_id: Mapped[int] = mapped_column(ForeignKey("roles.role_id", ondelete="RESTRICT"), nullable=True, index=True)
+    credential_id: Mapped[int] = mapped_column(
+        ForeignKey("credentials.credential_id", ondelete="RESTRICT"),
+        nullable=True,
+        index=True,
+    )
+    role_id: Mapped[int] = mapped_column(
+        ForeignKey("roles.role_id", ondelete="RESTRICT"), nullable=True, index=True
+    )
     email: Mapped[str] = mapped_column(String(255), nullable=True, index=False)
     username: Mapped[str] = mapped_column(String(255), nullable=True, index=False)
     created_at: Mapped[str] = mapped_column(String(255), nullable=True, index=True)
