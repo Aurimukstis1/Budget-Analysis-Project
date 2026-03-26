@@ -1,16 +1,16 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from repositories import IncomeRepository
+from repositories import IncomeRepository, IncomeCategoryRepository
 from schemas import IncomeCreate, IncomePut
 
 
 class IncomeService:
     @staticmethod
     async def create_income(db: AsyncSession, payload: IncomeCreate):
-        # category = await CategoryRepository.get_by_id(db, payload.category_id)
-
-        # if not category:
-        #     raise NotFoundException("Category not found")
+        if payload.category_id is not None:
+                    category = await IncomeCategoryRepository.get_by_id(db, payload.category_id)
+                    if not category:
+                        raise ValueError("Category not found")
 
         return await IncomeRepository.create(db=db, data=payload.model_dump())
 
