@@ -9,6 +9,7 @@ class IncomeCategoryRepository:
         result = await db.execute(
             select(IncomeCategory).where(IncomeCategory.category_id == category_id)
         )
+        
         return result.scalar_one_or_none()
 
     @staticmethod
