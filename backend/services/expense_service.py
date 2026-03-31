@@ -1,15 +1,60 @@
 # from datetime import datetime, date
 from sqlalchemy.ext.asyncio import AsyncSession
+from fastapi import HTTPException, status
 
 from repositories import ExpenseRepository
-from schemas import ExpenseCreate
+from schemas.expense import ExpenseCreate, ExpensePut
 
 
 class ExpenseService:
     @staticmethod
     async def create_expense(db: AsyncSession, payload: ExpenseCreate):
+        if payload.category_id is not None:
+            category = await ExpenseRepository.get_by_id(
+                db, payload.category_id
+            )
 
+            if category is None:
+                raise HTTPException(
+                    status_code=status.HTTP_404_NOT_FOUND,
+                    detail="Category not found",
+                )
         return await ExpenseRepository.create(db=db, expense_data=payload.model_dump())
+
+    @staticmethod
+    async def update_expense(
+        db: AsyncSession,
+        expense_id: int,
+        payload: ExpensePut,
+    ):
+        try:
+            expense = await ExpenseRepository.get_by_id(db, expense_id)
+
+            if not expense:
+                raise ValueError("Expense not found")
+
+            update_data = payload.model_dump(exclude_unset=True)
+
+            if "category_id" in update_data and update_data["category_id"] is not None:
+                category = await ExpenseRepository.get_by_id(
+                    db, update_data["category_id"]
+                )
+
+                if not category:
+                    raise ValueError("Category not found")
+                
+            for field in ["amount", "name", "category_id"]:
+                if field in update_data:
+                    setattr(expense, field, update_data[field])
+
+            await db.commit()
+            await db.refresh(expense)
+
+            return expense
+
+        except Exception:
+            await db.rollback()
+            raise
 
     # @staticmethod
     # async def create_expense(db: AsyncSession, payload: ExpenseCreate):
