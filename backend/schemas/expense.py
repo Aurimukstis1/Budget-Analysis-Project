@@ -18,16 +18,17 @@ class ExpenseBase(BaseModel):
 class ExpenseCreate(ExpenseBase):
     pass
 
+
 class ExpensePut(ExpenseBase):
     pass
 
 
-
 class ExpenseOut(BaseModel):
+    expense_id: int
     user_id: Optional[int]
     amount: float
     name: str
-    categoty_id: Optional[int]
+    category_id: int
     created_at: Optional[str]
     updated_at: Optional[str]
 

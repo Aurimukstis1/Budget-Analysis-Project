@@ -1,8 +1,7 @@
-
 from pydantic import BaseModel, ConfigDict, Field
 
 
-class IncomeCategoryBase(BaseModel):
+class ExpenseCategoryBase(BaseModel):
     name: str = Field(..., min_length=1, max_length=50)
 
     model_config = ConfigDict(
@@ -11,11 +10,11 @@ class IncomeCategoryBase(BaseModel):
     )
 
 
-class IncomeCategoryCreate(IncomeCategoryBase):
+class ExpenseCategoryCreate(ExpenseCategoryBase):
     pass
 
 
-class IncomeCategoryOut(BaseModel):
+class ExpenseCategoryOut(BaseModel):
     category_id: int
     description: str
 
