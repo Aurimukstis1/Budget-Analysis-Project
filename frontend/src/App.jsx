@@ -1,10 +1,10 @@
-import CreateIncome from "./pages/CreateIncome";
+import TransactionForm from "./components/TransactionForm";
 // import { Routes, Route } from "react-router";
 
 function App() {
   return(
     <>
-      <CreateIncome />
+      <TransactionForm />
     </>
   );
 }
