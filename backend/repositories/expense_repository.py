@@ -31,3 +31,9 @@ class ExpenseRepository:
             select(Expense).where(Expense.category_id == category_id)
         )
         return result.scalars().all()
+    
+
+    @staticmethod
+    async def get_all(db: AsyncSession) -> list[Expense]:
+        result = await db.execute(select(Expense))
+        return result.scalars().all()

@@ -29,3 +29,10 @@ async def update_income(
     db: AsyncSession = Depends(get_db),
 ):
     return await IncomeService.update_income(db, income_id, payload)
+
+
+@router.get("", response_model=list[IncomeOut])
+async def get_income(
+    db: AsyncSession = Depends(get_db),
+):
+    return await IncomeService.get_income(db)

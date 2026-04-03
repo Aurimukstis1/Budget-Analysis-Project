@@ -29,3 +29,10 @@ async def update_expense(
     db: AsyncSession = Depends(get_db),
 ):
     return await ExpenseService.update_expense(db, expense_id, payload)
+
+
+@router.get("", response_model=list[ExpenseOut])
+async def get_expense(
+    db: AsyncSession = Depends(get_db),
+):
+    return await ExpenseService.get_expense(db)

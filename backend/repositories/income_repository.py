@@ -24,3 +24,8 @@ class IncomeRepository:
             select(Income).where(Income.category_id == category_id)
         )
         return result.scalars().all()
+    
+    @staticmethod
+    async def get_all(db: AsyncSession) -> list[Income]:
+        result = await db.execute(select(Income))
+        return result.scalars().all()

@@ -28,7 +28,7 @@ class IncomeOut(BaseModel):
     user_id: Optional[int]
     amount: float
     name: str
-    category_id: int
+    category_id: Optional[int]
     created_at: Optional[str]
     updated_at: Optional[str]
 
