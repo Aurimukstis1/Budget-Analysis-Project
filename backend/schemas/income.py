@@ -7,7 +7,7 @@ class IncomeBase(BaseModel):
     user_id: Optional[int] = None
     amount: float = Field(..., gt=0)
     name: str = Field(..., min_length=1, max_length=255)
-    category_id: Optional[int] = None
+    category_id: int
 
     model_config = ConfigDict(
         str_strip_whitespace=True,
@@ -28,7 +28,7 @@ class IncomeOut(BaseModel):
     user_id: Optional[int]
     amount: float
     name: str
-    category_id: Optional[int]
+    category_id: int
     created_at: Optional[str]
     updated_at: Optional[str]
 
