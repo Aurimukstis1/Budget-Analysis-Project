@@ -60,6 +60,10 @@ class ExpenseService:
         except Exception:
             await db.rollback()
             raise
+            
+
+    async def get_expense(db: AsyncSession):
+        return await ExpenseRepository.get_all(db)
 
 
 # class ExpenseService:

@@ -54,3 +54,7 @@ class IncomeService:
         except Exception:
             await db.rollback()
             raise
+
+    @staticmethod
+    async def get_income(db: AsyncSession):
+        return await IncomeRepository.get_all(db)    
