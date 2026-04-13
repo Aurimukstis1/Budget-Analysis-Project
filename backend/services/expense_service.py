@@ -45,6 +45,23 @@ class ExpenseService:
             raise
 
     @staticmethod
+    async def delete_expense(
+        db: AsyncSession,
+        expense_id: int
+    ):
+        try:
+            expense = await ExpenseRepository.get_by_id(db, expense_id)
+
+            if not expense:
+                raise ValueError("Expense not found")
+
+            await ExpenseRepository.delete(db, expense)
+
+        except Exception:
+            await db.rollback()
+            raise
+            
+
     async def get_expense(db: AsyncSession):
         return await ExpenseRepository.get_all(db)
 

@@ -41,6 +41,19 @@ class IncomeService:
             await db.rollback()
             raise
 
+    @staticmethod
+    async def delete_income(db: AsyncSession, income_id: int):
+        try:
+            income = await IncomeRepository.get_by_id(db, income_id)
+
+            if not income:
+                raise ValueError("Income not found")
+
+            await IncomeRepository.delete(db, income)
+
+        except Exception:
+            await db.rollback()
+            raise
 
     @staticmethod
     async def get_income(db: AsyncSession):

@@ -30,7 +30,15 @@ async def update_expense(
 ):
     return await ExpenseService.update_expense(db, expense_id, payload)
 
-
+@router.delete(
+    "/{expense_id}"
+)
+async def delete_expense(
+    expense_id: Annotated[int, Path(gt=0)],
+    db: AsyncSession = Depends(get_db)
+):
+    return await ExpenseService.delete_expense(db, expense_id)
+  
 @router.get("", response_model=list[ExpenseOut])
 async def get_expense(
     db: AsyncSession = Depends(get_db),

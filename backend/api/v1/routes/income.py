@@ -31,6 +31,15 @@ async def update_income(
     return await IncomeService.update_income(db, income_id, payload)
 
 
+@router.delete("/{income_id}")
+async def delete_income(
+    income_id: Annotated[int, Path(gt=0)],
+    db: AsyncSession = Depends(get_db),
+):
+    await IncomeService.delete_income(db, income_id)
+    return {"message": "Income deleted successfully"}
+
+  
 @router.get("", response_model=list[IncomeOut])
 async def get_income(
     db: AsyncSession = Depends(get_db),
