@@ -17,3 +17,15 @@ class IncomeRepository:
     async def get_by_id(db: AsyncSession, income_id: int) -> Income | None:
         result = await db.execute(select(Income).where(Income.income_id == income_id))
         return result.scalar_one_or_none()
+
+    @staticmethod
+    async def get_by_category(db: AsyncSession, category_id: int) -> list[Income]:
+        result = await db.execute(
+            select(Income).where(Income.category_id == category_id)
+        )
+        return result.scalars().all()
+    
+    @staticmethod
+    async def get_all(db: AsyncSession) -> list[Income]:
+        result = await db.execute(select(Income))
+        return result.scalars().all()
