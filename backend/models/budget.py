@@ -6,10 +6,11 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column
 
+from .mixins import TimestampMixin
 from database import Base
 
 
-class Budget(Base):
+class Budget(TimestampMixin, Base):
     __tablename__ = "budgets"
     # __table_args__ defines additional table-level configuration
     # __table_args__ = (
@@ -28,8 +29,6 @@ class Budget(Base):
         nullable=True,
         index=True,
     )
-    created_at: Mapped[str] = mapped_column(String(255), nullable=True, index=True)
-    updated_at: Mapped[str] = mapped_column(String(255), nullable=True, index=True)
 
     # categories: Mapped[list["Category"]] = relationship(
     #     secondary=book_category,

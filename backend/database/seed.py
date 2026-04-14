@@ -1,6 +1,7 @@
 import asyncio
 
 from sqlalchemy import select
+from datetime import date
 
 from database.session import AsyncSessionLocal
 from models import Expense, ExpenseCategory, Income, IncomeCategory
@@ -32,8 +33,6 @@ async def seed_data() -> None:
                 category = ExpenseCategory(
                     category=cat_data["category"],
                     description=cat_data["description"],
-                    created_at="2026-01-01",
-                    updated_at="2026-01-01",
                 )
                 session.add(category)
                 await session.flush()
@@ -63,8 +62,6 @@ async def seed_data() -> None:
                 category = IncomeCategory(
                     category=cat_data["category"],
                     description=cat_data["description"],
-                    created_at="2026-01-01",
-                    updated_at="2026-01-01",
                 )
                 session.add(category)
                 await session.flush()
@@ -92,10 +89,9 @@ async def seed_data() -> None:
                 expense = Expense(
                     name=exp_data["name"],
                     amount=exp_data["amount"],
+                    date=date.today(),
                     category_id=category.category_id,
-                    user_id=None,
-                    created_at="2026-01-01",
-                    updated_at="2026-01-01",
+                    user_id=None
                 )
                 session.add(expense)
             else:
@@ -126,10 +122,9 @@ async def seed_data() -> None:
                 income = Income(
                     name=inc_data["name"],
                     amount=inc_data["amount"],
+                    date=date.today(),
                     category_id=category.category_id,
                     user_id=None,  # jei modelyje yra
-                    created_at="2026-01-01",
-                    updated_at="2026-01-01",
                 )
                 session.add(income)
             else:

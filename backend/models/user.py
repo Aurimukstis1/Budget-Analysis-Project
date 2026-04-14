@@ -5,10 +5,11 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import Mapped, mapped_column
 
+from .mixins import TimestampMixin
 from database import Base
 
 
-class User(Base):
+class User(TimestampMixin, Base):
     __tablename__ = "users"
     # __table_args__ defines additional table-level configuration
     # __table_args__ = (
@@ -28,8 +29,6 @@ class User(Base):
     )
     email: Mapped[str] = mapped_column(String(255), nullable=True, index=False)
     username: Mapped[str] = mapped_column(String(255), nullable=True, index=False)
-    created_at: Mapped[str] = mapped_column(String(255), nullable=True, index=True)
-    updated_at: Mapped[str] = mapped_column(String(255), nullable=True, index=True)
 
     # categories: Mapped[list["Category"]] = relationship(
     #     secondary=book_category,

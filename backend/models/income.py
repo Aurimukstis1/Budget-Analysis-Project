@@ -5,11 +5,14 @@ from sqlalchemy import (
     String,
 )
 from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import Date
+from datetime import date
 
+from .mixins import TimestampMixin
 from database import Base
 
 
-class Income(Base):
+class Income(TimestampMixin, Base):
     __tablename__ = "income"
     # __table_args__ defines additional table-level configuration
     # __table_args__ = (
@@ -23,14 +26,13 @@ class Income(Base):
         ForeignKey("users.user_id", ondelete="RESTRICT"), nullable=True, index=True
     )
     amount: Mapped[float] = mapped_column(Float, nullable=False)
+    date: Mapped[date] = mapped_column(Date, nullable=False)
     name: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
     category_id: Mapped[int] = mapped_column(
         ForeignKey("income_categories.category_id", ondelete="RESTRICT"),
         nullable=True,
         index=True,
     )
-    created_at: Mapped[str] = mapped_column(String(255), nullable=True, index=True)
-    updated_at: Mapped[str] = mapped_column(String(255), nullable=True, index=True)
 
     # categories: Mapped[list["Category"]] = relationship(
     #     secondary=book_category,

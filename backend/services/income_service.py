@@ -28,7 +28,7 @@ class IncomeService:
 
             update_data = payload.model_dump(exclude_unset=True)
 
-            for field in ["amount", "name", "category_id"]:
+            for field in ["amount", "name", "category_id", "date"]:
                 if field in update_data:
                     setattr(income, field, update_data[field])
 
