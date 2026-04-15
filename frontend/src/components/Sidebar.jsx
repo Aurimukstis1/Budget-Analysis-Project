@@ -7,6 +7,8 @@ import {
   LogOut,
   User,
 } from "lucide-react";
+import '../styles/Sidebar.css';
+import '../components/Dashboard'
 
 function Sidebar() {
   const location = useLocation();
@@ -16,7 +18,7 @@ function Sidebar() {
         name: "Guest",
         email: "guest@email.com"
     };
-
+  //--------------------
   const navItems = [
     { path: "/", label: "Dashboard", icon: LayoutDashboard },
     { path: "/transactions", label: "Transactions", icon: ListFilter },
@@ -33,7 +35,7 @@ function Sidebar() {
     
     <div className="sidebar">
       <div>
-        <h1>Budget Tracker</h1>
+        <h1 className="header_style-sidebar">Budget Tracker</h1>
         <p>Manage your finances</p>
       </div>
       <nav className="style-nav-bar">
@@ -74,6 +76,7 @@ function Sidebar() {
         
         </div>
       </div>
+
     
   );
 }
