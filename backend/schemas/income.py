@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 from datetime import date, datetime
@@ -30,8 +30,9 @@ class IncomeOut(BaseModel):
     date: date
     amount: float
     name: str
-    category_id: Optional[int]
+    category_id: int
     created_at: Optional[datetime]
     updated_at: Optional[datetime]
 
     model_config = ConfigDict(from_attributes=True)
+

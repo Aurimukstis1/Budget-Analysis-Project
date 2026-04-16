@@ -3,8 +3,8 @@ from typing import Annotated
 from fastapi import APIRouter, Depends, Path, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from dependencies import get_db
-from schemas import IncomeCreate, IncomeOut, IncomePut
+from dependencies import get_db, get_list_params
+from schemas import IncomeCreate, IncomeOut, IncomePut, ListParams, PaginatedResponse
 from services import IncomeService
 
 router = APIRouter(prefix="/income", tags=["Income"])
@@ -45,3 +45,18 @@ async def get_income(
     db: AsyncSession = Depends(get_db),
 ):
     return await IncomeService.get_income(db)
+
+
+# @router.get(
+#     "",
+#     response_model=PaginatedResponse[IncomeOut],
+#     status_code=status.HTTP_200_OK,
+# )
+# async def list_incomes(
+#     db: AsyncSession = Depends(get_db),
+#     params: ListParams = Depends(get_list_params),
+# ):
+#     return await IncomeService.list_incomes(db, params)
+
+
+

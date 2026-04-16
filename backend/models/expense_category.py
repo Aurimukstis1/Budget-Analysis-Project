@@ -2,10 +2,15 @@ from sqlalchemy import (
     Integer,
     String,
 )
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .mixins import TimestampMixin
 from database import Base
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .expense import Expense
 
 
 class ExpenseCategory(TimestampMixin, Base):
@@ -21,7 +26,7 @@ class ExpenseCategory(TimestampMixin, Base):
     category: Mapped[str] = mapped_column(String(255), nullable=False, index=False)
     description: Mapped[str] = mapped_column(String(255), nullable=True, index=False)
 
-    # categories: Mapped[list["Category"]] = relationship(
-    #     secondary=book_category,
-    #     back_populates="books",
-    # )
+    expenses: Mapped[list["Expense"]] = relationship(
+        "Expense",
+        back_populates="category",
+    )
