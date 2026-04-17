@@ -7,6 +7,7 @@ import {
   LogOut,
   User,
 } from "lucide-react";
+import "../styles/Sidebar.css";
 
 function Sidebar() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function Sidebar() {
 
   const navItems = [
     { path: "/", label: "Dashboard", icon: LayoutDashboard },
-    { path: "/transactions", label: "Transactions", icon: ListFilter },
+    { path: "/transactions", label: "Transactions", icon: ListFilter},
     { path: "/statistics", label: "Statistics", icon: BarChart3 },
     { path: "/add", label: "Add Transaction", icon: PlusCircle },
   ];
@@ -33,8 +34,8 @@ function Sidebar() {
     
     <div className="sidebar">
       <div>
-        <h1>Budget Tracker</h1>
-        <p>Manage your finances</p>
+        <h1 className="budget-tracker-style">Budget Tracker</h1>
+        <p className="manage-your-finances-style">Manage your finances</p>
       </div>
       <nav className="style-nav-bar">
         <ul className="style-nav-icons">
@@ -47,7 +48,6 @@ function Sidebar() {
                 <Link
                   to={item.path}
                   className={isActive ? "nav-link active" : "nav-link"}
-    
                 >
                   <Icon className="iconSize" />
                   <span>{item.label}</span>
