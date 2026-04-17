@@ -1,0 +1,17 @@
+.choice_style{
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+}
+.category_transactions{
+    display: flex;
+    flex-direction: row;
+    gap:  25px;
+}
+.transaction_list_style{
+    padding: 15px;
+}
