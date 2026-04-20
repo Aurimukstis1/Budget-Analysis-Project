@@ -1,11 +1,14 @@
+.sidebar{
+  background-color: #fff;
+}
 /* Header */
-h1 {
+.budget-tracker-style {
   font-size: 22px;
   color: #2563eb;
   margin-bottom: 4px;
 }
 
-p {
+.manage-your-finances-style {
   color: #6b7280;
   font-size: 14px;
 }
