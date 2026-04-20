@@ -1,8 +1,7 @@
-# from datetime import datetime, date
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from repositories import ExpenseCategoryRepository, ExpenseRepository
-from schemas.expense import ExpenseCreate, ExpensePut
+from schemas import ExpenseCreate, ExpensePut, ListParams, PaginatedResponse
 
 
 class ExpenseService:
@@ -61,9 +60,22 @@ class ExpenseService:
             await db.rollback()
             raise
             
-
+    @staticmethod
     async def get_expense(db: AsyncSession):
         return await ExpenseRepository.get_all(db)
+    
+
+    # @staticmethod
+    # async def list_expenses(
+    #     db: AsyncSession,
+    # ):
+    #     expenses = await ExpenseRepository.get_list(db)
+    #     print(expenses)
+    #     return expenses
+
+
+
+
 
 
 # class ExpenseService:

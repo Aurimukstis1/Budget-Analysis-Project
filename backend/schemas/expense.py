@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Literal
 from datetime import date, datetime
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -36,3 +36,4 @@ class ExpenseOut(BaseModel):
     updated_at: Optional[datetime]
 
     model_config = ConfigDict(from_attributes=True)
+
